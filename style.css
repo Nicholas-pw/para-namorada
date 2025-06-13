@@ -41,10 +41,13 @@ body {
 }
 
 @keyframes bordaPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.4;
   }
+
   50% {
     transform: scale(1.02);
     opacity: 0.6;
@@ -176,13 +179,68 @@ body {
 }
 
 @keyframes flutuar {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
 }
+
+#modal-surpresa {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(140, 74, 90, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.conteudo-modal {
+  background: #fff0f3;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: flutuar 1.5s ease-in-out infinite alternate;
+}
+
+.conteudo-modal h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: #8c4a5a;
+  margin-bottom: 1rem;
+}
+
+.conteudo-modal p {
+  font-size: 1.2rem;
+  color: #6b4a56;
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #8c4a5a;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.fechar:hover {
+  transform: scale(1.2);
+}
+
 
 /* Animações fade in */
 @keyframes fadeInDown {
@@ -190,6 +248,7 @@ body {
     opacity: 0;
     transform: translateY(-18px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -201,6 +260,7 @@ body {
     opacity: 0;
     transform: translateY(18px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -211,6 +271,7 @@ body {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }

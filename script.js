@@ -173,3 +173,22 @@ for (let i = 0; i < 60; i++) {
   particulas.push(new Particula());
 }
 animateParticulas();
+
+// Modal surpresa com botão
+function mostrarSurpresa() {
+  const modal = document.createElement('div');
+  modal.id = 'modal-surpresa';
+  modal.innerHTML = `
+    <div class="conteudo-modal">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+      <h2>Eu te amooo muitãooo do tantão do infinitãoo!</h2>
+      <p>Essa é só uma das muitas formas de mostrar o quanto você é especial pra mim. ❤️</p>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function fecharModal() {
+  const modal = document.getElementById('modal-surpresa');
+  if (modal) modal.remove();
+}
