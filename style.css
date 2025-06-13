@@ -1,9 +1,113 @@
-/* Usando Calibre para contadores */
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #f7e6e8 0%, #f3d2d8 100%);
+  min-height: 100vh;
+  color: #4a2f3b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+  background: #fff5f7cc;
+  border-radius: 24px;
+  padding: 40px 35px 50px;
+  box-shadow: 0 6px 20px rgba(74, 47, 59, 0.25);
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  border: 2px dashed rgba(140, 74, 90, 0.1);
+  animation: bordaPulse 4s infinite;
+  z-index: -1;
+}
+
+@keyframes bordaPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.6;
+  }
+}
+
+.titulo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+  color: #8c4a5a;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 3px rgba(140, 74, 90, 0.3);
+  animation: fadeInDown 1s ease forwards;
+  opacity: 0;
+}
+
+.mensagem {
+  font-size: 1.3rem;
+  color: #6b4a56;
+  line-height: 1.5;
+  margin-bottom: 2.3rem;
+  font-style: italic;
+  animation: fadeInUp 1.3s ease forwards;
+  opacity: 0;
+}
+
+.contador {
+  margin: 2.5rem 0 3rem;
+  font-size: 1.3rem;
+  color: #8c4a5a;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  animation: fadeIn 1.8s ease forwards;
+  opacity: 0;
+}
+
+.contador h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.1rem;
+  margin-bottom: 1rem;
+  color: #a05264;
+}
+
 .contador-valores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  font-weight: bold;
+  font-size: 1.3rem;
   font-family: 'Calibre', 'Montserrat', sans-serif;
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 240, 243, 0.4);
   transition: all 0.4s ease-in-out;
+}
+
+.contador-valores div {
+  background-color: #fff0f3;
+  padding: 10px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(140, 74, 90, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contador-valores div:hover {
@@ -11,7 +115,45 @@
   box-shadow: 0 0 15px rgba(140, 74, 90, 0.3);
 }
 
-/* Botão delicado */
+/* Galeria */
+.galeria {
+  margin-top: 3.5rem;
+  user-select: none;
+}
+
+.galeria h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  color: #8c4a5a;
+  text-shadow: 1px 1px 2px rgba(140, 74, 90, 0.15);
+  animation: fadeIn 1.7s ease forwards;
+  opacity: 0;
+}
+
+.fotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 18px;
+}
+
+.fotos img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 16px rgba(204, 128, 139, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  filter: drop-shadow(0 0 2px #c88a97);
+}
+
+.fotos img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 25px rgba(204, 128, 139, 0.45);
+}
+
+/* Botão surpresa */
 .btn-surpresa {
   display: inline-block;
   margin-top: 2.5rem;
@@ -33,7 +175,6 @@
   box-shadow: 0 10px 20px rgba(140, 74, 90, 0.3);
 }
 
-/* Animação de flutuação */
 @keyframes flutuar {
   0%, 100% {
     transform: translateY(0);
@@ -43,24 +184,127 @@
   }
 }
 
-/* Animação de borda delicada no container */
-.container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  border: 2px dashed rgba(140, 74, 90, 0.1);
-  animation: bordaPulse 4s infinite;
-  z-index: -1;
+/* Animações fade in */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes bordaPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.4;
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
   }
-  50% {
-    transform: scale(1.02);
-    opacity: 0.6;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Canvas estilos */
+canvas#coracoes,
+canvas#particulas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 900px) {
+  .container {
+    max-width: 90%;
+    padding: 35px 25px 40px;
+  }
+
+  .titulo {
+    font-size: 2.6rem;
+  }
+
+  .mensagem {
+    font-size: 1.2rem;
+  }
+
+  .btn-surpresa {
+    padding: 12px 35px;
+    font-size: 1.1rem;
+  }
+
+  .galeria h2 {
+    font-size: 1.9rem;
+  }
+
+  .fotos img {
+    height: 130px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 20px 35px;
+  }
+
+  .titulo {
+    font-size: 2.3rem;
+  }
+
+  .mensagem {
+    font-size: 1.1rem;
+  }
+
+  .galeria h2 {
+    font-size: 1.7rem;
+  }
+
+  .fotos {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .fotos img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 25px 15px 30px;
+  }
+
+  .titulo {
+    font-size: 1.9rem;
+  }
+
+  .mensagem {
+    font-size: 1rem;
+  }
+
+  .galeria h2 {
+    font-size: 1.5rem;
+  }
+
+  .fotos {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .fotos img {
+    height: 100px;
   }
 }
